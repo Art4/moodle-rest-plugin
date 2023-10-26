@@ -2,12 +2,15 @@ version: "2"
 
 services:
   moodle:
-    image: "moodlehq/moodle-php-apache:8.0"
+    build:
+      context: ./.docker
+      dockerfile: Moodle_Dockerfile
     depends_on:
       - db
       - mailpit
     volumes:
       - "${MOODLE_DOCKER_WWWROOT}:/var/www/html"
+      - "./moodledata:/var/www/moodledata"
       - ".docker/web/apache2_faildumps.conf:/etc/apache2/conf-enabled/apache2_faildumps.conf"
       - ".docker/web/apache2_mailpit.conf:/etc/apache2/conf-enabled/apache2_mailpit.conf"
     environment:
