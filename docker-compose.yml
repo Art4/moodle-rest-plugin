@@ -1,7 +1,7 @@
 version: "2"
 
 services:
-  webserver:
+  moodle:
     image: "moodlehq/moodle-php-apache:8.0"
     depends_on:
       - db
@@ -30,13 +30,29 @@ services:
               --wait-timeout=28800
               --skip-log-bin
     environment:
-      MYSQL_ROOT_PASSWORD: "m@0dl3ing"
+      MYSQL_ROOT_PASSWORD: "password"
       MYSQL_USER: moodle
       MYSQL_PASSWORD: "m@0dl3ing"
       MYSQL_DATABASE: moodle
     volumes:
       - persistent:/var/lib/mysql
       - persistent:/var/www/moodledata
+
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      # https://docs.phpmyadmin.net/en/latest/setup.html#docker-environment-variables
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: "password"
+      UPLOAD_LIMIT: 250M
+    ports:
+      - 8080:80
+    # links:
+    #   - db:db
+    restart: always
+    depends_on:
+      - "db"
 
   mailpit:
     image: axllent/mailpit
