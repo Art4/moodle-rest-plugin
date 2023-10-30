@@ -10,6 +10,7 @@ services:
       - mailpit
     volumes:
       - "${MOODLE_DOCKER_WWWROOT}:/var/www/html"
+      # - "./local_moodle_rest_plugin:/var/www/html/local/moodle_rest_plugin"
       - "./moodledata:/var/www/moodledata"
       - ".docker/web/apache2_faildumps.conf:/etc/apache2/conf-enabled/apache2_faildumps.conf"
       - ".docker/web/apache2_mailpit.conf:/etc/apache2/conf-enabled/apache2_mailpit.conf"

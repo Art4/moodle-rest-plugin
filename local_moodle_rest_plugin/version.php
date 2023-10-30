@@ -14,7 +14,7 @@ $plugin->component = 'local_moodle_rest_plugin';
 $plugin->version = 2023102601;
 $plugin->release = '0.1.1';
 
-$plugin->requires = 2023100900.00; // Moodle 4.3
+$plugin->requires = 2023042403.00; // Moodle 4.2
 // Available as of Moodle 3.9.0 or later.
 $plugin->supported = [
     402,
