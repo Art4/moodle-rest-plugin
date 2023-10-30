@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Version metadata for the local_moodle_rest_plugin plugin.
  *

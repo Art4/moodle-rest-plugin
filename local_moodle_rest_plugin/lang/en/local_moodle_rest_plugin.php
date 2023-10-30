@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Languages configuration for the local_moodle_rest_plugin plugin.
  *
